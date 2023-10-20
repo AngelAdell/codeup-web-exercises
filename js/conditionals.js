@@ -145,27 +145,33 @@ console.log (luckyNumber)
 
 alert (`You received the number ${random}`);
 
+function calculateTotal(randomTotal,random) {
+
 switch (luckyNumber) {
     case ('1'):
-        console.log(" 10% something is better than nothing!");
+        return randomTotal * 0.1;
+        alert("10% something is better than nothing!");
         break;
     case ('2'):
-        console.log(" 25% This should help!");
+        return randomTotal * 0.25;
+        alert("25% This should help!");
         break;
     case ("3"):
-        console.log("35% is better than 25%.");
+        return randomTotal * 0.35;
+        alert("35% is better than 25%.");
         break;
     case ("4"):
-        console.log("50% off is real savings!");
+        return randomTotal * 0.5;
+        alert("50% off is real savings!");
         break;
     case ("5"):
-        console.log(" 100% Sweet! You received everything for free!");
+        return randomTotal * 1.0;
+        alert(" 100% Sweet! You received everything for free!");
         break;
     default:
-        console.log("You received no discount");
- function calculateTotal(num1,num2) {
-   var total = num1 * num2
-}
+        return randomTotal * 0;
+        alert("You received no discount");
+
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 5.
