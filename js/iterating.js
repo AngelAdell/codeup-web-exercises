@@ -52,28 +52,25 @@ familyNames.forEach(name => (console.log(`Here are the Adell sister names: ${nam
 
     const arr = [familyNames];
         function firstName(arr) {
-            if (arr.length > 0) {
                 return arr[0];
-            } else {
-                return undefined; // or handle this case as you prefer
-            }
         }
-    console.log(firstName([1, 2, 3, 4])); // returns Angel
+    console.log(firstName([1, 2, 3, 4]));
+    console.log(firstName(familyNames));
 
         function secondName(arr) {
-            if (arr.length > 1) {
-                return arr[1];
-            } else {
-                return undefined; // or handle this case as you prefer
-            }
+            return arr[1];
         }
-    console.log(secondName([1, 2, 3, 4])); // returns Ashley
+    console.log(secondName([1, 2, 3, 4]));
+    console.log(secondName(familyNames));
 
-        function lastName(arr) {
-            if (arr.length > 0) {
-                return arr[arr.length - 1];
-            } else {
-                return undefined; // or handle this case as you prefer
-            }
+    function lastName(arr) {
+        if (arr.length > 0) {
+            return arr[arr.length - 1];
+        } else {
+            return undefined; // or handle this case as you prefer
         }
-    console.log(lastName([1, 2, 3, 4])); // returns Darah
+    }
+console.log(lastName([1, 2, 3, 4])); // returns Darah
+console.log(lastName(familyNames)); // returns Darah
+
+})();
