@@ -26,15 +26,13 @@
 
     // log info about the circle
     console.log("Raw circle information" + circle.getArea(false));
-    console.log("Circle information rounded to the nearest whole number" + circle.round(true));
+    console.log("Circle information rounded to the nearest whole number " + circle.round(true));
 
     console.log("=======================================================");
     // TODO: Change the radius of the circle to 5.
 
     // log info about the circle
     console.log ('Radius ', circle.radius);
-    console.log("Raw circle information");
-    circle.logInfo(false);
-    console.log("Circle information rounded to the nearest whole number");
-    circle.logInfo(true);
+    console.log("Raw circle information ", circle.round(false));
+    console.log("Circle information rounded to the nearest whole number ", circle.round(true));
 })();
