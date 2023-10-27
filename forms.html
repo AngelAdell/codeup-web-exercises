@@ -5,11 +5,16 @@
     <title>Register With Us</title>
 </head>
 <body>
-<script src="forms.css"></script>
-<form id="formsexercise">
+<link rel="stylesheet" type="text/css" href="css/forms.css">
 <h1> Register With Us!</h1>
+<form id="formsexercise">
+
 <section>
-<form action = "">
+<form id="Bio" method="POST" action="https://request-inspector.glitch.me/">
+   <p>Email <input type="text" name="email" size="15"
+           maxlength="30" /> </p>
+    <p>Password <input type="text" name="password" size="15"
+                    maxlength="30" /> </p>
     <p> Give us a short bio.</p>
     <textarea bio="tell me about yourself" cols="40" rows="8">Tell Us About Yourself.</textarea>
 </form>
@@ -32,7 +37,7 @@
 </section>
 <section>
     <h2>Web Browser</h2>
-    <form id="browser form">
+    <form id="browser" method="POST" action="https://request-inspector.glitch.me/">
         <p>What Web Browser are you using?</p>
         <select name ="browser">
             <option id="google" value="google">Google Chrome</option>
@@ -43,7 +48,6 @@
         </select>
     </form>
 </section>
-    </br>
     </br>
     </br>
     <div><button type="submit">Submit</button></div>
