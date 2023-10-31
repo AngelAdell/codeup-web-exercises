@@ -1,3 +1,93 @@
  .fancy-header {
         color: purple;
     }
+
+ h1 {
+     font-family:  'Prata', sans-serif;
+     font-size: xx-large;
+     font-style: normal;
+     color: #efefef;
+     text-decoration: underline;
+     text-align: center;
+ }
+.titlepage {
+    text-align: center;
+}
+ body {
+     height: 100%;
+     font-family: 'Prata';
+     /*background-image: url("../img/pexels-mikael-blomkvist-6476808.jpg");*/
+     /*background-repeat: no-repeat;*/
+     /*background-attachment: fixed;*/
+     /*background-size: cover;*/
+     /*background-position: center;*/
+ }
+ .background {
+     opacity: 40%;
+     background-image: url("../img/pexels-brett-sayles-3653997.jpg");
+     background-repeat: no-repeat;
+     background-attachment: scroll;
+     background-position: 50% 50%;
+ }
+
+ th, td {
+        text-align: left;
+     border: 1px solid black;
+     margin: 0;
+     padding: 5px;
+     }
+ th {
+         letter-spacing: 0.1em;
+         font-size: 110%;
+         border-bottom: 2px solid #000000;
+         border-top: 1px solid #000000;
+         text-align: left;}
+
+  thead tr th{
+      border-bottom: 2px solid black;
+  }
+  tr {
+      border: none;
+  }
+   tbody tr:nth-child(odd) {
+    background-color: lightgray;
+
+}
+
+ ol {
+     display: list-item;
+     list-style-type: upper-roman;
+ }
+ ul {
+     display: inline-block;
+     list-style-type: upper-roman;
+ }
+
+ a {
+     transition: .5s;
+     text-decoration: none;
+ }
+
+ a:link, a:visited {
+     color: darkblue;
+ }
+
+ a:hover {
+     color: cornflowerblue;
+     font-size: 32px;
+ }
+
+ a:active {
+     color: steelblue;
+     background-color: lightgray;
+ }
+
+ /*Add a style to change the color of the headers on your page and make them underlined.
+ Add a style to change the background color of the page.
+ Add a style to add a background image to your background. Search how to manipulate the position, sizing of this background image.
+ Add a style to change the list-style to something other than the default bullet.
+ Add a style to change the font for the entire page. Use google fonts if you would like.
+ Add a style to change the table, table cells td and rows tr padding and font sizes.
+ Add a style to alter the anchor tags and its different states. (e.g. link, visited, hover and active).
+ Continue experimenting with styles to increase the visual appeal of the page.
+ Finally, commit the changes to your git repository, and push to GitHub. */
