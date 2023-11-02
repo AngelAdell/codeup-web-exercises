@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: auto;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    background: lightgray;
+}
+.menu ul {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    list-style: none;
+    padding: 1em;
+    margin: auto;
+}
+nav a {
+    position: left;
+    text-decoration: none;
+    color: black;
+    font-family: Verdana;
+    padding: 1em;
+}
+nav a:hover {
+    color: #0056b3;
+}
+
+.logo ul{
+    width: 100%;
+    list-style: none;
+    font-family: 'Monstserrat', sans-serif;
+    font-size: x-large;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    display: flex;
+    margin: auto;
+    padding: 0;
+}
+
+
+.webicons {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 1em;
+    margin: auto;
+}
+
+.webicons ul{
+        list-style: none;
+}
+
+/*.magglass {*/
+/*    display: flex;*/
+/*    align-items: baseline;*/
+/*}.user {*/
+/*    display: flex;*/
+/*    align-items: baseline;*/
+/*}*/

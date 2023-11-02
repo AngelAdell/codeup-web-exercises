@@ -1,0 +1,36 @@
+* {
+    font-family: monospace;
+}
+
+.container {
+    height: 500px;
+    border: 2px solid black;
+    background: #7D84B2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+/* flex direction column- align items will move the box left and right
+flex-direction-row- align items moves the items up and down
+ */
+
+div {
+    padding: 2em;
+    background: #A2D729;
+
+}
+
+.big{
+    padding: 10em 10em 5em;
+}
+
+.small {
+    padding: 0;
+}
+
+/* can flex items that are of different sizes
+Adjusting the padding will change element being centered not the content area.
+Flex containers do not wrap
+ */
