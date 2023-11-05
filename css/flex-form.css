@@ -34,8 +34,8 @@ body {
     border-radius: 5px;
     display: flex;
     margin: auto;
-    justify-content: center;
-    align-items: center;
+    /*justify-content: center;*/
+    /*align-items: center;*/
     /* TODO: Add an automatic margin and a flex container to this selector */
 }
 
@@ -59,8 +59,8 @@ body {
 
 .destination {
     flex-basis: 15em;
-    padding: 10px;
-    margin: auto;
+    /*padding: 10px;*/
+    /*margin: auto;*/
 }
     /* TODO:
         Add an explicit size for items along the main axis of 15em.
