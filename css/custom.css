@@ -1,0 +1,65 @@
+@media screen {
+// X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    .jumbotron{
+        display: none;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .jumbotron{
+        display: block;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) { ... }
+}
+
+
+*{
+    box-sizing: border-box;
+}
+
+.container-fluid {
+    display: flex;
+}
+
+.btn-outline-primary {
+    width: 120%;
+}
+
+.pizza-header {
+    /*background-image: image("img/pizza.png");*/
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pizza-header-content {
+    width: 100%;
+    /*top: 50%;*/
+    /*left:50%;*/
+    background-color: rgba(255, 255, 255, .8) ;
+    /*opacity: 90%;*/
+    /*padding-x: auto;*/
+    position: absolute;
+}
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+}
+

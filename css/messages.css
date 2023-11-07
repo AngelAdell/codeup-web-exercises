@@ -1,26 +1,69 @@
 :root {
     --main-bg-color: brown;
-
+    --cream: #FBFAC9ff;
+    --satin-sheen-gold: #A79737ff;
+    --claret: #871732ff;
+    --mimi-pink: #FAD4D8ff;
+    --nyanza: #D0F3DBff;
+    --mint: #72B38Cff;
+    --lavender-web: #CEDFFFff;
+    --tropical-indigo: #878CCDff;
 }
 
 
 
 body, html {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
     padding: 0;
     margin: 0;
     font-family: Arial, Ubuntu, sans-serif;
-}
 
-.message {
+    .message {
+        padding: 6px;
+    }
 
-}
 
-.message-info{
+    .message-info {
+        width: 80%;
+        height: 30px;
+       background-color: #CEDFFFff;
+        color: #878CCDff;
+        margin: 5px;
+        border: 1px solid gray;
+        border-radius: 3px ;
+    }
 
-}
+    .message-success {
+        width: 80%;
+        height: 30px;
+        background-color: #D0F3DBff;
+        color: #72B38Cff;
+        margin: 5px;
+        border: 1px solid gray;
+        border-radius: 3px ;
+    }
 
-.message-success{
+    .message-warning {
+        width: 80%;
+        height: 30px;
+        background-color: #FBFAC9ff;;
+        color: #A79737ff;
+        margin: 5px;
+        border: 1px solid gray;
+        border-radius: 3px ;
+    }
+
+    .message-error{
+        width: 80%;
+        height: 30px;
+        background-color: #FAD4D8ff;
+        color: #871732ff;
+        margin: 5px;
+        border: 1px solid gray;
+        border-radius: 3px ;
+    }
 
 }

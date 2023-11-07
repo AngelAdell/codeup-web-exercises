@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
 }
+
+@media screen{
+}
 body {
     margin: 0;
     padding: 0;
@@ -29,24 +32,25 @@ nav a:hover {
 
 .logo{
     font-family: 'Monstserrat', sans-serif;
-    font-size: x-large;
+    font-size: xx-large;
     text-align: center;
     position: absolute;
     width: 100%;
-    top: -24px;
+    top: -32px;
     padding: .2em 0;
 }
 
 .medialinks {
     margin-left: auto;
+    padding-right: 1em;
+}.webcart {
+    display: block;
+     padding-right: 1em;
+}.magglass {
+    display: block;
+     padding-right: 1em;
+}.user {
+    display: block;
+     padding-right: 1em;
 }
 
-
-
-/*.magglass {*/
-/*    display: flex;*/
-/*    align-items: baseline;*/
-/*}.user {*/
-/*    display: flex;*/
-/*    align-items: baseline;*/
-/*}*/
