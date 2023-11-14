@@ -19,25 +19,25 @@
     function updateTimer() {
         if (detonationTimer == 0) {
             alert('EXTERMINATE!');
-            document.body.innerHTML = 'functional';
+            document.body.innerHTML = '';
         } else if (detonationTimer > 0) {
             document.getElementById('timer').innerHTML = detonationTimer;
         }
 
         detonationTimer--;
     }
-setInterval(function (){
-        updateTimer();
-    }, 1000);
+    let bomDefuseTimer = setInterval(function (){
+                        updateTimer();
+                        },1000);
 
-    let bomDefuseTimer = updateTimer;
+
 
     // TODO: When this function runs, it needs to
     // cancel the interval/timeout for updateTimer()
-        setTimeout(function () {
+        function defuseTheBOM() {
         clearInterval(bomDefuseTimer);
         alert('BOMB DEFUSED!')
-    }, 5000);
+    };
 
     // Don't modify anything below this line!
     //
