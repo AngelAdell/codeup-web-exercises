@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+    .bold-list-items {
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+<h1 class="text-center"> Why a Skincare Routine Matters?</h1>
+<div id="QA1">
+    <h3  class= "clickable-header" data-list-id="QA1"> Why is having a great skincare routine important?</h3>
+    <ul id="skinRoutine-QA1">
+        <li>A) To enhance your natural beauty and boost self-confidence.</li>
+        <li>B) To replace the need for a healthy diet and exercise.</li>
+        <li>C) To develop a resistance to sunlight.</li>
+    </ul>
+    <button type="button" class="btn btn-outline-dark btn-sm click">Click for Answer</button>
+</div>
+    <script>
+        document.querySelector('.click').addEventListener('click', function (e) {
+            var li = document.querySelector('#QA1').lastElementChild.previousElementSibling.lastElementChild;
+            console.log(li);
+            li.style.backgroundColor = '#ffc600';
+            e.target.textContent = 'Clicked!';
+        });
+    </script>
+<div id="QA2">
+    <h3 class="clickable-header" data-list-id="QA2">How does maintaining a regular skincare routine contribute to improved skin health and overall well-being?</h3>
+    <ul id="skinRoutine-QA2">
+        <li>A)By treating the skin sporadically, neglecting the need for a consistent routine for optimal results.</li>
+        <li>B)By relying solely on genetics and ignoring external factors like skincare in the pursuit of overall health.</li>
+        <li>C)By preventing and addressing skin issues, promoting a healthy and radiant complexion, and supporting a positive self-image.</li>
+    </ul>
+    <button type="button" class="btn btn-outline-dark btn-sm click">Click for Answer</button>
+    <script>
+        document.querySelector('.click').addEventListener('click', function (e) {
+            var listItem = document.querySelector('#QA2').lastElementChild;
+            listItem.style.backgroundColor = '#ffc600';
+            e.target.textContent = 'Clicked!';
+        });
+    </script>
+<!--    // the answer is C) By preventing and addressing skin issues, promoting a healthy and radiant complexion, and supporting a positive self-image.//-->
+</div>
+<div id="QA3">
+    <h3 class="clickable-header" data-list-id="QA3">Why are key ingredients like Kakadu Plum, Bakuchiol, Aloe vera, and Coffee seed important to have in your skincare routine?</h3>
+    <ul id="skinRoutine-QA3">
+        <li>A)These ingredients are only beneficial for specific skin types and may not contribute to overall skincare effectiveness.</li>
+        <li>B) Kakadu plum provides a rich source of vitamin C for skin brightening, bakuchiol acts as a natural alternative to retinol, aloe vera soothes and hydrates, and coffee seed offers antioxidant protection.</li>
+        <li>C) Skincare routines are equally effective without specific key ingredients, and their inclusion is merely a marketing strategy.</li>
+    </ul>
+    <button type="button" class="btn btn-outline-dark btn-sm click">Click for Answer</button>
+    <script>
+        document.querySelector('.click').addEventListener('click', function (e) {
+            var listItem = document.querySelector('#QA3').target.nextSibling;
+            listItem.style.backgroundColor = '#ffc600';
+            e.target.textContent = 'Clicked!';
+        });
+    </script>
+</div>
+<!--// B) Kakadu plum provides a rich source of vitamin C for skin brightening, bakuchiol acts as a natural alternative to retinol, aloe vera soothes and hydrates, and coffee seed offers antioxidant protection.*/-->
+<script>
+    var clickableHeaders = document.querySelectorAll('.clickable-header');
+
+    clickableHeaders.forEach(function (header) {
+        header.addEventListener('click', function (e) {
+            var listId = e.target.getAttribute('data-list-id');
+            var listItems = document.querySelectorAll('#' + listId + ' li');
+
+            listItems.forEach(function (item) {
+                item.classList.toggle('bold-list-items');
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>
