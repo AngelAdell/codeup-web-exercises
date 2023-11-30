@@ -53,8 +53,8 @@ const webmail = users.map (user => {
 console.log(webmail);
 
 // Question 3 -5 .reduce
-const totalYears = userrs.reduce((total, person) => {
-    return total + person.yearsOfExperience;
+const totalYears = users.reduce((total, user) => {
+    return total + user.yearsOfExperience;
 }, 0);
 
 // Question 4

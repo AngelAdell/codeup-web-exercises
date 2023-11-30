@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map Box Exercise </title>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+<div id='map' style='width: 80vw; height: 50vh; margin: auto'></div>
+<script src= "js/keys.js"></script>
+<script>
+  mapboxgl.accessToken = MB_Keys;
+  const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v12', // style URL
+    center: [-74.5, 40], // starting position [lng, lat]
+    zoom: 9, // starting zoom
+  });
+  map.on('style.load', () => {
+      map.setConfigProperty('basemap', 'lightPreset', 'dusk');
+  });
+  map.addLayer({
+      id: 'points-of-interest',
+      slot: 'middle',
+      source: {
+          type: 'vector',
+          url: 'mapbox://mapbox.mapbox-streets-v8'
+      },
+      'source-layer': 'poi_label',
+      type: 'circle'
+  });
+</script>
+<script>const setCurrentPosition = async () => {
+    await navigator.geolocation.getCurrentPosition(function (navPosObj) {
+        console.log("Latitude is :", navPosObj.coords.latitude);
+        console.log("Longitude is :", navPosObj.coords.longitude);
+        console.log("Latitude is :" + navPosObj.coords.latitude + " Longitude is :" + navPosObj.coords.longitude);
+
+        try {
+            localStorage.setItem('slp_nav_lat', navPosObj.coords.latitude);
+            localStorage.setItem('slp_nav_lng', navPosObj.coords.longitude);
+            sessionStorage.setItem('slp_nav_lat', navPosObj.coords.latitude);
+            sessionStorage.setItem('slp_nav_lng', navPosObj.coords.longitude);
+        } catch {
+            console.log("Not able to obtain geo coords.");
+        }
+    });
+}
+
+setCurrentPosition();
+</script>
+
+</body>
+</html>
