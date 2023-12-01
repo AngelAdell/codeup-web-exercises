@@ -69,14 +69,15 @@
         const listItems = document.querySelectorAll('li');
 
         // TODO: Set text color on every other list item to grey
-        for (let i = 1; i < listItems.length; i += 2) {
-            listItems[i].style.color = 'grey';
-        }; else if ( listheader.addEventListener('click', function () {
-        for (let i = 1; i < listItems.length; i =! 2) {
-            listItems[i].style.color = 'grey';
-        })
+    for (let i = 1; i < listItems.length; i += 2) {
+        listItems[i].style.color = 'grey';
+    }
 
-         });
+    listheader.addEventListener('click', function () {
+        for (let i = 0; i < listItems.length; i += 2) {
+            listItems[i].style.color = 'grey';
+        }
+    });
 
         // TODO: Set text color of li with dbid = 1 to blue
         const listItemWithDbid1 = document.querySelector('[data-dbid="1"]');
@@ -88,11 +89,11 @@
         const subParagraphs = document.getElementsByClassName('sub-paragraph') ;
 
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
-       subParagraphs[0].innerHTML = '<p>Mission Accomplished!</p>';
+    subParagraphs[0].innerHTML = '<p>Mission Accomplished!</p>';
 
-    paraheader.addEventListener('click', function (){
-        subParagraphs.innerHTML = <h1>You did it</h1>
-        <p> Your really learning this coding ting. Get it Girl!</p>
+    paraheader.addEventListener('click', function () {
+        subParagraphs[0].innerHTML =
+            '<h1>You did it</h1><p>Your really learning this coding ting. Get it Girl!</p>';
     });
 
 
