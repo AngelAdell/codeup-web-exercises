@@ -9,7 +9,25 @@
 <script>
     "use strict";
 
-    document.addEventListener("keyup", event => console.log(event.key) );
+    const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a", "Enter"];
+    let konamiCodeIndex = 0;
+
+    document.addEventListener("keyup", event => {
+        const keyPressed = event.key.toLowerCase();
+
+        if (keyPressed === konamiCode[konamiCodeIndex]) {
+            konamiCodeIndex++;
+
+            if (konamiCodeIndex === konamiCode.length) {
+                // Konami Code
+                alert("You have added 30 lives!");
+                konamiCodeIndex = 0; // Reset for future inputs
+                // Add your additional actions here (e.g., change background, play sound)
+            }
+        } else {
+            konamiCodeIndex = 0; // Reset if the entered key is incorrect
+        }
+    });
 </script>
 </body>
 </html>
