@@ -5,96 +5,100 @@
     <title>Map Box Exercise </title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css' rel='stylesheet'/>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"></script>
-    <link src="css/mapbox.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- Add Tailwind CSS link here -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
 
-
-<body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
-
-<header>
-    <h1 class="display-3"> Trust Me, It's Good! Foodie Blog</h1>
+<body class="bg-sandybrown">
+<header class="text-center mt-8">
+    <h1 class="text-5xl">Trust Me, It's Good! Foodie Blog</h1>
 </header>
 
-
-<div class="d-flex justify-content-center">
-    <h3>Your December Guide to the Best Foodie Spots in the 7 Cities</h3>
-    <p> Are you visiting the 7 cities better kn</p>
+<div class="text-center mt-4">
+    <h3 class="text-2xl">Your December Guide to the Best Foodie Spots in the 7 Cities</h3>
+    <p>Are you visiting the 7 cities better known for their foodie delights?</p>
 </div>
 
-
-<section class="d-flex row">
+<section class="flex justify-center space-x-4 mt-8">
+    <!-- Display restaurant cards -->
     <div class="card flex-column" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="img/download.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Steak & Tonic</h5>
-            <p class="card-text">Have some </p>
+            <p class="card-text">Have some delicious steak!</p>
             <a href="#" class="btn btn-primary"></a>
         </div>
     </div>
     <div class="card flex-column" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="img/download-2.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">Citrus Cafe</h5>
+            <p class="card-text">Brunch!</p>
+            <a href="#" class="btn btn-primary"></a>
         </div>
     </div>
     <div class="card flex-column" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="img/download-3.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">Mango Mangeaux</h5>
+            <p class="card-text">Shark Tank Approved!</p>
+            <a href="#" class="btn btn-primary"></a>
         </div>
     </div>
+
+    <!-- Repeat the above card structure for each restaurant -->
 </section>
 
-
 <section>
-    <div id='map' style='width: 80vw; height: 50vh; margin: auto' class="container-fluid"></div>
+    <!-- Map container -->
+    <div id='map' style='width: 80vw; height: 50vh;  margin-top: 30px' class="container-fluid"></div>
+
     <script src="js/keys.js"></script>
     <script src="js/geocoding_utils.js"></script>
     <script>
         mapboxgl.accessToken = MB_Keys;
+
+        const restaurants = [
+            { name: 'Steak & Tonic', address: '11810 Fountain Way a, Newport News, VA 23606' },
+            {name: 'Citrus Cafe', address: '357 N Great Neck Rd, Virginia Beach, VA 23454'},
+            {name: 'Mango Mangeaux', address: '33 E Mellen St, Hampton, VA 23663'}
+            ];
+
         const map = new mapboxgl.Map({
-            container: 'map', // container ID
-            style: "mapbox://styles/mapbox/satellite-streets-v11", // style URL
-            center: [-75, 36], // starting position [lng, lat]
-            zoom: 5, // starting zoom
+            container: 'map',
+            style: 'mapbox://styles/mapbox/satellite-streets-v11',
+            center: [-75, 36], // Default center
+            zoom: 5,
+        });
+
+        // Function to create a marker and popup for a restaurant
+        function createMarker(restaurant) {
+            geocode(restaurant.address, mapboxgl.accessToken).then(coords => {
+                const marker = new mapboxgl.Marker()
+                    .setLngLat(coords)
+                    .addTo(map);
+
+                const popup = new mapboxgl.Popup()
+                    .setHTML(`<p>${restaurant.name}</p>`);
+
+                marker.setPopup(popup);
+            });
+        }
+
+        // Display markers and popups for each restaurant
+        restaurants.forEach(restaurant => createMarker(restaurant));
+
+        // Change zoom levels programmatically
+        const zoomLevels = [5, 15, 20];
+
+        zoomLevels.forEach(zoomLevel => {
+            setTimeout(() => {
+                map.setZoom(zoomLevel);
+            }, 2000); // Adjust delay as needed
         });
     </script>
 </section>
-
-<script>
-    geocode("11810 Fountain Way a, Newport News, VA 23606", MB_Keys).then(coords => {
-        const marker = new mapboxgl.Marker()
-            .setLngLat(coords)
-            .addTo(map);
-
-        const codeupPopup = new mapboxgl.Popup()
-            .setHTML("<p>The Speak Easy Experience</p>");
-
-        marker.setPopup(codeupPopup);
-    });
-    geocode("11810 Fountain Way a, Newport News, VA 23606", MB_Keys).then(coords => {
-        const marker = new mapboxgl.Marker()
-            .setLngLat(coords)
-            .addTo(map);
-
-        const codeupPopup = new mapboxgl.Popup()
-            .setHTML("<p>The Speak Easy Experience</p>");
-
-        marker.setPopup(codeupPopup);
-    });
-</script>
 
 </body>
 </html>
