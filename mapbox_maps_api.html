@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map Box Exercise </title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- Add Tailwind CSS link here -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+
+<body class="bg-sandybrown">
+<header class="text-center mt-8">
+    <h1 class="text-5xl">Trust Me, It's Good! Foodie Blog</h1>
+</header>
+
+<div class="text-center mt-4">
+    <h3 class="text-2xl">Your December Guide to the Best Foodie Spots in the 7 Cities</h3>
+    <p>Are you visiting the 7 cities better known for their foodie delights?</p>
+</div>
+
+<section class="flex justify-center space-x-4 mt-8">
+    <!-- Display restaurant cards -->
+    <div class="card flex-column" style="width: 18rem;">
+        <img src="img/download.jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Steak & Tonic</h5>
+            <p class="card-text">Have some delicious steak!</p>
+            <a href="#" class="btn btn-primary"></a>
+        </div>
+    </div>
+    <div class="card flex-column" style="width: 18rem;">
+        <img src="img/download-2.jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Citrus Cafe</h5>
+            <p class="card-text">Brunch!</p>
+            <a href="#" class="btn btn-primary"></a>
+        </div>
+    </div>
+    <div class="card flex-column" style="width: 18rem;">
+        <img src="img/download-3.jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Mango Mangeaux</h5>
+            <p class="card-text">Shark Tank Approved!</p>
+            <a href="#" class="btn btn-primary"></a>
+        </div>
+    </div>
+
+    <!-- Repeat the above card structure for each restaurant -->
+</section>
+
+<section>
+    <!-- Map container -->
+    <div id='map' style='width: 80vw; height: 50vh;  margin-top: 30px' class="container-fluid"></div>
+
+    <script src="js/keys.js"></script>
+    <script src="js/geocoding_utils.js"></script>
+    <script>
+        mapboxgl.accessToken = MB_Keys;
+
+        const restaurants = [
+            { name: 'Steak & Tonic', address: '11810 Fountain Way a, Newport News, VA 23606' },
+            {name: 'Citrus Cafe', address: '357 N Great Neck Rd, Virginia Beach, VA 23454'},
+            {name: 'Mango Mangeaux', address: '33 E Mellen St, Hampton, VA 23663'}
+            ];
+
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/satellite-streets-v11',
+            center: [-75, 36], // Default center
+            zoom: 5,
+        });
+
+        // Function to create a marker and popup for a restaurant
+        function createMarker(restaurant) {
+            geocode(restaurant.address, mapboxgl.accessToken).then(coords => {
+                const marker = new mapboxgl.Marker()
+                    .setLngLat(coords)
+                    .addTo(map);
+
+                const popup = new mapboxgl.Popup()
+                    .setHTML(`<p>${restaurant.name}</p>`);
+
+                marker.setPopup(popup);
+            });
+        }
+
+        // Display markers and popups for each restaurant
+        restaurants.forEach(restaurant => createMarker(restaurant));
+
+        // Change zoom levels programmatically
+        const zoomLevels = [5, 15, 20];
+
+        zoomLevels.forEach(zoomLevel => {
+            setTimeout(() => {
+                map.setZoom(zoomLevel);
+            }, 2000); // Adjust delay as needed
+        });
+    </script>
+</section>
+
+</body>
+</html>

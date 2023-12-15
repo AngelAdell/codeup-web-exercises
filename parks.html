@@ -22,13 +22,16 @@
     <button type="button" class="btn btn-outline-dark btn-sm click">Click for Answer</button>
 </div>
     <script>
-        document.querySelector('.click').addEventListener('click', function (e) {
-            var li = document.querySelector('#QA1').lastElementChild.previousElementSibling.lastElementChild;
-            console.log(li);
+        document.querySelector('#QA1 .click').addEventListener('click', function (e) {
+            var li = document.querySelector('#QA1 ul').lastElementChild;
+
             li.style.backgroundColor = '#ffc600';
             e.target.textContent = 'Clicked!';
         });
     </script>
+</div>
+
+
 <div id="QA2">
     <h3 class="clickable-header" data-list-id="QA2">How does maintaining a regular skincare routine contribute to improved skin health and overall well-being?</h3>
     <ul id="skinRoutine-QA2">
@@ -37,15 +40,18 @@
         <li>C)By preventing and addressing skin issues, promoting a healthy and radiant complexion, and supporting a positive self-image.</li>
     </ul>
     <button type="button" class="btn btn-outline-dark btn-sm click">Click for Answer</button>
-    <script>
-        document.querySelector('.click').addEventListener('click', function (e) {
-            var listItem = document.querySelector('#QA2').lastElementChild;
-            listItem.style.backgroundColor = '#ffc600';
+</div>
+<script>
+        document.querySelector('#QA2 .click').addEventListener('click', function (e) {
+            var li = document.querySelector('#QA2 ul').lastElementChild;
+            li.style.backgroundColor = '#ffc600';
             e.target.textContent = 'Clicked!';
         });
     </script>
 <!--    // the answer is C) By preventing and addressing skin issues, promoting a healthy and radiant complexion, and supporting a positive self-image.//-->
-</div>
+
+
+
 <div id="QA3">
     <h3 class="clickable-header" data-list-id="QA3">Why are key ingredients like Kakadu Plum, Bakuchiol, Aloe vera, and Coffee seed important to have in your skincare routine?</h3>
     <ul id="skinRoutine-QA3">
@@ -55,9 +61,9 @@
     </ul>
     <button type="button" class="btn btn-outline-dark btn-sm click">Click for Answer</button>
     <script>
-        document.querySelector('.click').addEventListener('click', function (e) {
-            var listItem = document.querySelector('#QA3').target.nextSibling;
-            listItem.style.backgroundColor = '#ffc600';
+        document.querySelector('#QA3 .click').addEventListener('click', function (e) {
+            var li = document.querySelector('#QA3 ul').lastElementChild.previousElementSibling;
+            li.style.backgroundColor = '#ffc600';
             e.target.textContent = 'Clicked!';
         });
     </script>

@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    background-color: rosybrown;
+}
+body {
+    font-family: 'Crimson', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-post {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.blog-post:hover {
+    background-color: #edf2f7;
+}

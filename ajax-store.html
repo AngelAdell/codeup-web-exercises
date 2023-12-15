@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Online Store</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/ajax.css">
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<h1>Richmond Tool Store</h1>
+<div>
+<table id="products" class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Title</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Price</th>
+    <th scope="col">Categories</th>
+  </tr>
+  </thead>
+  <tbody id="insertProducts"></tbody>
+</table>
+</div>
+<!-- Add input and button for adding a new tool -->
+<div id="input-tool">
+  <input type="text" id="newToolTitle" placeholder="Tool Title">
+  <input type="number" id="newToolQuantity" placeholder="Quantity">
+  <input type="number" id="newToolPrice" placeholder="Price">
+  <input type="text" id="newToolCategory" placeholder="Category(s)">
+  <button onclick="addNewTool()">Add Tool</button>
+</div>
+<script>
+  "use strict";
+  // TODO: Create an AJAX GET request for the file under data/inventory.json
+  fetch ('data/inventory.json')
+          .then(res => {
+            if (!res.ok) {
+              throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json ();
+          })
+          .then((data) => {
+            const tableBody = document.querySelector('#products tbody');
+
+            data.forEach((item) => {
+              const row = document.createElement('tr');
+
+              const toolTitle = document.createElement('td');
+              toolTitle.textContent = item.title;
+              row.appendChild(toolTitle);
+
+              const toolQuantity = document.createElement('td');
+              toolQuantity.textContent = item.quantity;
+              row.appendChild(toolQuantity);
+
+              const toolPrice = document.createElement('td');
+              toolPrice.textContent = `$${item.price}`;
+              row.appendChild(toolPrice);
+
+              const toolCategory = document.createElement('td');
+              toolCategory.textContent = item.categories.join(', ');
+              row.appendChild(toolCategory);
+
+
+              tableBody.appendChild(row);
+
+            });
+          })
+
+  .catch((error) => {
+    console.error('Error fetching data:', error);
+  });
+
+
+  // TODO: Take the data from inventory.json and append it to the products table
+  document.addEventListener('DOMContentLoaded', function () {
+    fetch('data/inventory.json')
+            .then(response => response.json())
+            .then(data => {
+              const table = document.getElementById('inventoryTable');
+              data.forEach(item => {
+                const row = table.insertRow();
+                row.insertCell(0).textContent = item.id;
+                row.insertCell(1).textContent = item.name;
+                row.insertCell(2).textContent = item.price;
+              });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+  });
+
+  document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('add')) {
+      addNewTool();
+    }
+  });
+
+
+
+  function addNewTool() {
+    const titleInput = document.getElementById('newToolTitle');
+    const quantityInput = document.getElementById('newToolQuantity');
+    const priceInput = document.getElementById('newToolPrice');
+    const categoryInput = document.getElementById('newToolCategory');
+
+    const newTool = {
+      title: titleInput.value,
+      quantity: parseInt(quantityInput.value),
+      price: parseFloat(priceInput.value),
+      categories: categoryInput.value.split(',').map(category => category.trim()),
+    };
+    const tableBody = document.querySelector('#products tbody');
+    const newRow = createTableRow(newTool);
+    tableBody.appendChild(newRow);
+
+    // Clear input fields after adding a new tool
+    titleInput.value = '';
+    quantityInput.value = '';
+    priceInput.value = '';
+    categoryInput.value = '';
+  }
+
+    function createTableRow(tool) {
+        const row = document.createElement('tr');
+
+        const toolTitle = document.createElement('td');
+        toolTitle.textContent = tool.title;
+        row.appendChild(toolTitle);
+
+        const toolQuantity = document.createElement('td');
+        toolQuantity.textContent = tool.quantity;
+        row.appendChild(toolQuantity);
+
+        const toolPrice = document.createElement('td');
+        toolPrice.textContent = `$${tool.price}`;
+        row.appendChild(toolPrice);
+
+        const toolCategory = document.createElement('td');
+        toolCategory.textContent = tool.categories.join(', ');
+        row.appendChild(toolCategory);
+
+        return row;
+    }
+  fetch('/update-tool', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newTool),
+  })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log('Tool added successfully:', data);
+          })
+          .catch(error => {
+            console.error('Error updating JSON file:', error);
+          });
+
+</script>
+
+</body>
+</html>

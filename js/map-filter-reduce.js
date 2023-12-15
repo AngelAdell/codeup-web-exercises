@@ -38,43 +38,29 @@ const users = [
 
 // Question 1
 
-const speak = users.filter ( speak => {
-    return speak.languages >=3;
-});
+
+// Question 1:
+const speak = users.filter(user => user.languages.length >= 3);
 
 console.log(speak);
 
-// Question 2 Map
-
-const webmail = users.map (user => {
-    return user.email;
-});
+// Question 2:
+const webmail = users.map(user => user.email);
 
 console.log(webmail);
 
-// Question 3 -5 .reduce
-const totalYears = userrs.reduce((total, person) => {
-    return total + person.yearsOfExperience;
-}, 0);
+// Question 3-5:
+const totalYears = users.reduce((total, user) => total + user.yearsOfExperience, 0);
 
-// Question 4
-
-const longEmail = users.reduce((acc, user) => {
-    if (user.email.length > acc.email.length) {
-        return user;
-    } else {
-        return acc;
-    }
-}, users[0]);
-
-console.log(longEmail.email); // Output the longest email
-
-// Question 5
+const longEmail = users.reduce((acc, user) => (user.email.length > acc.email.length ? user : acc), users[0]);
 
 const singleString = users.reduce((acc, user, index) => {
     if (index === users.length - 1) {
-        return acc + user.name + ', '; // Add the user's name followed by a comma and space
+        return acc + user.name + '.';
+        return acc + user.name + ', ';
     }
 }, 'Your instructors are: ');
 
+console.log(totalYears);
+console.log(longEmail.email);
 console.log(singleString);
